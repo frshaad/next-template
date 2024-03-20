@@ -1,4 +1,4 @@
-npm run types:check
-npm run lint:fix
-npm run format:fix
+npm run format
+npm run check-types
+npm run lint
 git add --all

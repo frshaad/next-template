@@ -3,13 +3,15 @@
   "extends": [
     "plugin:tailwindcss/recommended",
     "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "plugins": ["simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest"
   },
+  "plugins": ["tailwindcss", "@typescript-eslint", "simple-import-sort"],
   "rules": {
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error"
