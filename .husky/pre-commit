@@ -1,4 +1,1 @@
-npm run format
-npm run check-types
-npm run lint
-git add --all
+pnpm exec lint-staged
