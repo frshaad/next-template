@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     viewTransition: true,
     webVitalsAttribution: ['CLS', 'LCP', 'INP'],
     turbopackFileSystemCacheForDev: true,
+    typedEnv: true,
   },
 };
 
