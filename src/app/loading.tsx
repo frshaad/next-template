@@ -1,18 +1,30 @@
+import { Loader2 } from 'lucide-react';
+
 export default function Loading() {
   return (
-    <div className="bg-background flex min-h-[50vh] items-center justify-center">
-      <div className="relative">
-        {/* Outer circle */}
-        <div className="border-border h-12 w-12 rounded-full border-2" />
-
-        {/* Spinning gradient arc */}
-        <div className="absolute top-0 left-0 h-12 w-12">
-          <div className="border-primary h-12 w-12 animate-spin rounded-full border-t-2" />
+    <div className="bg-background flex min-h-screen w-full items-center justify-center p-4">
+      <div className="w-full max-w-md space-y-8">
+        {/* Icon with gradient background */}
+        <div className="flex justify-center">
+          <div className="relative">
+            <div className="bg-primary/10 absolute inset-0 rounded-full blur-3xl" />
+            <div className="bg-card border-border relative rounded-full border-2 p-6">
+              <Loader2
+                className="text-muted-foreground h-16 w-16 animate-spin"
+                strokeWidth={1.5}
+              />
+            </div>
+          </div>
         </div>
 
-        {/* Optional loading text */}
-        <div className="text-muted-foreground mt-4 text-center text-sm font-medium">
-          Loading...
+        {/* Content */}
+        <div className="space-y-4 text-center">
+          <h2 className="text-foreground text-2xl font-semibold tracking-tight text-balance">
+            Loading
+          </h2>
+          <p className="text-muted-foreground mx-auto max-w-sm leading-relaxed text-balance">
+            Please wait while we fetch your content...
+          </p>
         </div>
       </div>
     </div>

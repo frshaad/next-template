@@ -1,9 +1,14 @@
+'use client';
+
 import Link from 'next/link';
-import { ArrowLeft, FileQuestion, Home } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { LogIn, ShieldX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
-export default function NotFound() {
+export default function UnauthorizedPage() {
+  const pathname = usePathname();
+
   return (
     <div className="bg-background flex min-h-screen w-full items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
@@ -12,7 +17,7 @@ export default function NotFound() {
           <div className="relative">
             <div className="bg-primary/10 absolute inset-0 rounded-full blur-3xl" />
             <div className="bg-card border-border relative rounded-full border-2 p-6">
-              <FileQuestion
+              <ShieldX
                 className="text-muted-foreground h-16 w-16"
                 strokeWidth={1.5}
               />
@@ -20,42 +25,30 @@ export default function NotFound() {
           </div>
         </div>
 
-        {/* Content */}
         <div className="space-y-4 text-center">
           <div className="space-y-2">
             <h1 className="text-5xl font-bold tracking-tight text-balance">
-              404
+              401
             </h1>
             <h2 className="text-foreground text-2xl font-semibold tracking-tight text-balance">
-              Page Not Found
+              Authentication Required
             </h2>
           </div>
 
           <p className="text-muted-foreground mx-auto max-w-sm leading-relaxed text-balance">
-            The page you&apos;re looking for doesn&apos;t exist or has been
-            moved. Please check the URL or return to the home page.
+            You need to sign in to access this resource. Please log in with your
+            credentials to continue.
           </p>
         </div>
 
-        {/* Actions */}
         <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardContent className="space-y-3 pt-6">
+          <CardContent className="space-y-3">
             <Button asChild className="w-full" size="lg">
-              <Link href="/">
-                <Home className="mr-2 h-4 w-4" />
-                Back to Home
-              </Link>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              className="w-full bg-transparent"
-              size="lg"
-            >
-              <Link href="javascript:history.back()">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Go Back
+              <Link
+                href={{ pathname: '/login', query: { redirect: pathname } }}
+              >
+                <LogIn className="mr-2 size-4" />
+                Sign In
               </Link>
             </Button>
           </CardContent>
@@ -63,7 +56,7 @@ export default function NotFound() {
 
         {/* Footer text */}
         <p className="text-muted-foreground text-center text-sm">
-          Error Code: <span className="font-mono">NOT_FOUND_404</span>
+          Error Code: <span className="font-mono">AUTH_403</span>
         </p>
       </div>
     </div>
