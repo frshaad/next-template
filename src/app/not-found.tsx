@@ -1,13 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { ArrowLeft, FileQuestion, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useGoBack } from '@/hooks';
 
 export default function NotFound() {
-  const router = useRouter();
+  const goBack = useGoBack();
 
   return (
     <div className="bg-background flex min-h-screen w-full items-center justify-center p-4">
@@ -56,7 +56,7 @@ export default function NotFound() {
               variant="outline"
               className="w-full bg-transparent"
               size="lg"
-              onClick={() => router.back()}
+              onClick={goBack}
             >
               <ArrowLeft className="mr-2 size-4" />
               Go Back
