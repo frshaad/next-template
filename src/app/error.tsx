@@ -54,21 +54,20 @@ export default function Error({
         <Card className="border-border/50 bg-card/50 backdrop-blur">
           <CardContent className="space-y-3 pt-6">
             <Button onClick={reset} className="w-full" size="lg">
-              <RefreshCw className="mr-2 h-4 w-4" />
+              <RefreshCw className="mr-2 size-4" />
               Try Again
             </Button>
 
-            <Button
-              asChild
-              variant="outline"
-              className="w-full bg-transparent"
-              size="lg"
-            >
-              <Link href="/">
-                <Home className="mr-2 h-4 w-4" />
+            <Link href="/">
+              <Button
+                variant="outline"
+                className="w-full bg-transparent"
+                size="lg"
+              >
+                <Home className="mr-2 size-4" />
                 Back to Home
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 

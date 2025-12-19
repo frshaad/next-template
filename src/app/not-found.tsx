@@ -1,9 +1,14 @@
+'use client';
+
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ArrowLeft, FileQuestion, Home } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 
 export default function NotFound() {
+  const router = useRouter();
+
   return (
     <div className="bg-background flex min-h-screen w-full items-center justify-center p-4">
       <div className="w-full max-w-md space-y-8">
@@ -39,24 +44,22 @@ export default function NotFound() {
 
         {/* Actions */}
         <Card className="border-border/50 bg-card/50 backdrop-blur">
-          <CardContent className="space-y-3 pt-6">
-            <Button asChild className="w-full" size="lg">
-              <Link href="/">
-                <Home className="mr-2 h-4 w-4" />
+          <CardContent className="flex flex-col gap-2">
+            <Link href="/">
+              <Button className="w-full" size="lg">
+                <Home className="mr-2 size-4" />
                 Back to Home
-              </Link>
-            </Button>
+              </Button>
+            </Link>
 
             <Button
-              asChild
               variant="outline"
               className="w-full bg-transparent"
               size="lg"
+              onClick={() => router.back()}
             >
-              <Link href="javascript:history.back()">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Go Back
-              </Link>
+              <ArrowLeft className="mr-2 size-4" />
+              Go Back
             </Button>
           </CardContent>
         </Card>

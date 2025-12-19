@@ -47,17 +47,16 @@ export default function ForbiddenPage() {
         <Card className="border-border/50 bg-card/50 backdrop-blur">
           <CardContent className="space-y-3">
             {isHome && (
-              <Button
-                asChild
-                variant="outline"
-                className="w-full bg-transparent"
-                size="lg"
-              >
-                <Link href="/">
+              <Link href="/">
+                <Button
+                  variant="outline"
+                  className="w-full bg-transparent"
+                  size="lg"
+                >
                   <Home className="mr-2 size-4" />
                   Back to Home
-                </Link>
-              </Button>
+                </Button>
+              </Link>
             )}
           </CardContent>
         </Card>

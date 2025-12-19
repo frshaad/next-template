@@ -43,14 +43,12 @@ export default function UnauthorizedPage() {
 
         <Card className="border-border/50 bg-card/50 backdrop-blur">
           <CardContent className="space-y-3">
-            <Button asChild className="w-full" size="lg">
-              <Link
-                href={{ pathname: '/login', query: { redirect: pathname } }}
-              >
+            <Link href={{ pathname: '/login', query: { redirect: pathname } }}>
+              <Button className="w-full" size="lg">
                 <LogIn className="mr-2 size-4" />
                 Sign In
-              </Link>
-            </Button>
+              </Button>
+            </Link>
           </CardContent>
         </Card>
 
