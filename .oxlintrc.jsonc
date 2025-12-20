@@ -9,11 +9,11 @@
     "promise",
     "react",
     "react-perf",
-    "import"
+    "import",
   ],
 
   "rules": {
-    "no-console": "off",
+    // "no-console": "error",
 
     "jsdoc/check-tag-names": "error",
     "jsdoc/require-yields": "error",
@@ -108,6 +108,6 @@
     "import/no-self-import": "error",
     "import/no-named-as-default-member": "error",
     "import/no-named-as-default": "error",
-    "import/no-empty-named-blocks": "error"
-  }
+    "import/no-empty-named-blocks": "error",
+  },
 }
