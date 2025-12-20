@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { LogIn, ShieldX } from 'lucide-react';
@@ -9,10 +8,6 @@ import { Card, CardContent } from '@/components/ui/card';
 
 export default function UnauthorizedPage() {
   const pathname = usePathname();
-  const href = useMemo(
-    () => ({ pathname: '/login', query: { redirect: pathname } }),
-    [pathname],
-  );
 
   return (
     <div className="bg-background flex min-h-screen w-full items-center justify-center p-4">
@@ -48,7 +43,7 @@ export default function UnauthorizedPage() {
 
         <Card className="border-border/50 bg-card/50 backdrop-blur">
           <CardContent className="space-y-3">
-            <Link href={href}>
+            <Link href={{ pathname: '/login', query: { redirect: pathname } }}>
               <Button className="w-full" size="lg">
                 <LogIn className="mr-2 size-4" />
                 Sign In
