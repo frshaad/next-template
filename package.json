@@ -11,6 +11,7 @@
     "lint:fix": "oxlint --fix",
     "fmt": "oxfmt",
     "typecheck": "tsc --noEmit",
+    "check": "pnpm fmt && pnpm lint:fix && pnpm typecheck",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:reset": "prisma db push --force-reset",
