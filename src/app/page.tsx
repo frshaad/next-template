@@ -1,7 +1,9 @@
-export default function Home() {
+import { CreatePostForm } from '@/components/form/create-post';
+
+export default function HomePage() {
   return (
     <div>
-      <h1>Hello World!</h1>
+      <CreatePostForm />
     </div>
   );
 }
