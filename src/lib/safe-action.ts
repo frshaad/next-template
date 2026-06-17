@@ -26,7 +26,7 @@ export const actionClient = createSafeActionClient({
       {
         action: metadata.actionName,
         durationMs: Math.round(duration),
-        success: !result.validationErrors && !result.serverError,
+        success: result.validationErrors !== undefined && result.serverError !== undefined,
       },
       `Action ${metadata.actionName} took ${Math.round(duration)}ms to finish.`
     );

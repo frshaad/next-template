@@ -41,6 +41,7 @@ export function CreatePostForm() {
     formState: { errors },
   } = form;
   const { isPending } = action;
+  const hasServerError = action.result.serverError !== undefined;
 
   const titleId = 'title';
   const titleErrorId = 'title-error';
@@ -53,7 +54,11 @@ export function CreatePostForm() {
         <CardDescription>Share your thoughts with the community</CardDescription>
       </CardHeader>
 
-      <form onSubmit={handleSubmitWithAction}>
+      <form
+        onSubmit={(event) => {
+          void handleSubmitWithAction(event);
+        }}
+      >
         <FieldSet disabled={isPending}>
           <CardContent className="space-y-4">
             <Field>
@@ -96,7 +101,7 @@ export function CreatePostForm() {
               </FieldContent>
             </Field>
 
-            {action.result.serverError && (
+            {hasServerError && (
               <p role="alert" className="text-destructive text-sm">
                 {action.result.serverError}
               </p>

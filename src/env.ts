@@ -31,7 +31,7 @@ export const env = createEnv({
     NODE_ENV: z.enum(['development', 'test', 'production']),
   },
 
-  skipValidation: !!process.env.SKIP_ENV_VALIDATION,
+  skipValidation: process.env.SKIP_ENV_VALIDATION === 'true',
 });
 
 export type Env = typeof env;
