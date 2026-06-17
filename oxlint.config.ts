@@ -46,20 +46,16 @@ export default defineConfig({
   env: { browser: true },
   ignorePatterns,
   overrides,
-  options: {
-    typeCheck: false,
-    typeAware: false,
-  },
-  jsPlugins: ['oxlint-plugin-complexity'],
+  jsPlugins: ['oxlint-plugin-complexity', '@tanstack/eslint-plugin-query'],
   plugins: [
     'eslint',
     'typescript',
-    'unicorn',
     'oxc',
     'import',
     'promise',
     'react',
     'jsx-a11y',
+    'unicorn',
     'nextjs',
   ],
   rules: {
@@ -121,7 +117,6 @@ export default defineConfig({
     'oxc/missing-throw': 'error',
     'oxc/number-arg-out-of-range': 'error',
     'oxc/uninvoked-array-callback': 'error',
-
     'oxc/no-accumulating-spread': 'error',
 
     // --- Promise ---------------------------------------
@@ -155,13 +150,11 @@ export default defineConfig({
     'typescript/strict-boolean-expressions': 'error',
     'typescript/switch-exhaustiveness-check': 'error',
     'typescript/unbound-method': 'error',
-
     'typescript/prefer-find': 'error',
 
     // --- React ---------------------------------------
     'react/no-unstable-nested-components': 'error',
     'react/rules-of-hooks': 'error',
-
     'react/react-compiler': 'error',
     'react/no-array-index-key': 'error',
     'react/jsx-no-constructed-context-values': 'warn',
@@ -177,7 +170,15 @@ export default defineConfig({
     'unicorn/no-useless-spread': 'error',
     'unicorn/no-useless-fallback-in-spread': 'error',
     'unicorn/prefer-optional-catch-binding': 'error',
-
     'unicorn/consistent-function-scoping': 'error',
+
+    // --- Tanstack Query ---------------------------------------
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/no-rest-destructuring': 'warn',
+    '@tanstack/query/stable-query-client': 'error',
+    '@tanstack/query/no-unstable-deps': 'error',
+    '@tanstack/query/infinite-query-property-order': 'error',
+    '@tanstack/query/no-void-query-fn': 'error',
+    '@tanstack/query/mutation-property-order': 'error',
   },
 });
