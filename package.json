@@ -35,15 +35,15 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dotenv": "^17.4.2",
-    "lucide-react": "^1.22.0",
-    "next": "16.2.9",
+    "lucide-react": "^1.23.0",
+    "next": "^16.2.9",
     "next-safe-action": "^8.5.5",
     "next-themes": "^0.4.6",
     "pg": "^8.22.0",
     "pino": "^10.3.1",
     "pino-pretty": "^13.1.3",
-    "react": "19.2.7",
-    "react-dom": "19.2.7",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
     "react-hook-form": "^7.80.0",
     "shadcn": "^4.12.0",
     "sonner": "^2.0.7",
@@ -54,11 +54,11 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.2",
     "@tanstack/eslint-plugin-query": "^5.101.2",
-    "@types/node": "^20.19.41",
+    "@types/node": "^24.13.2",
     "@types/pg": "^8.20.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "babel-plugin-react-compiler": "1.0.0",
+    "babel-plugin-react-compiler": "^1.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
     "oxfmt": "^0.57.0",
@@ -72,5 +72,8 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mjs,cjs}": "pnpm run lint",
     "*": "oxfmt --no-error-on-unmatched-pattern"
+  },
+  "engines": {
+    "node": "24.x"
   }
 }
