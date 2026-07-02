@@ -1,16 +1,12 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
+  reactCompiler: true,
   cacheComponents: true,
+  typedRoutes: true,
   experimental: {
     authInterrupts: true,
   },
-  logging: {
-    browserToTerminal: 'error',
-    fetches: { fullUrl: true },
-  },
-  reactCompiler: true,
-  typedRoutes: true,
 };
 
 export default nextConfig;
