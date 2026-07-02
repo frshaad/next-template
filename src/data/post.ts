@@ -16,11 +16,7 @@ export async function getPosts(): Promise<Post[]> {
     const response = await fetch(BASE_URL);
 
     if (!response.ok) {
-      throw new ExternalServiceError('Failed to fetch posts from external API', {
-        service: 'jsonplaceholder',
-        status: response.status,
-        statusText: response.statusText,
-      });
+      throw new ExternalServiceError({ message: 'Failed to fetch posts from external API' });
     }
 
     const rawData: unknown = await response.json();
@@ -29,8 +25,7 @@ export async function getPosts(): Promise<Post[]> {
     return validated;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.error('Validation error in external posts:', error.issues);
-      throw new ValidationError('Invalid data received from external API', error.issues);
+      throw new ValidationError(error);
     }
 
     if (error instanceof AppError) {
@@ -40,10 +35,7 @@ export async function getPosts(): Promise<Post[]> {
     // Unexpected error
     console.error('Unexpected error fetching external posts:', error);
 
-    throw new ExternalServiceError('Failed to fetch external posts', {
-      originalError: error instanceof Error ? error.message : String(error),
-      service: 'jsonplaceholder',
-    });
+    throw new ExternalServiceError({ message: 'Failed to fetch external posts' });
   }
 }
 
@@ -56,11 +48,7 @@ export async function getPost(postId: number): Promise<Post> {
     const response = await fetch(`${BASE_URL}/${postId}`);
 
     if (!response.ok) {
-      throw new ExternalServiceError('Failed to fetch the post from external API', {
-        service: 'jsonplaceholder',
-        status: response.status,
-        url: `https://jsonplaceholder.typicode.com/posts/${postId}`,
-      });
+      throw new ExternalServiceError({ message: 'Failed to fetch the post from external API' });
     }
 
     const rawData: unknown = await response.json();
@@ -70,7 +58,7 @@ export async function getPost(postId: number): Promise<Post> {
   } catch (error) {
     if (error instanceof z.ZodError) {
       console.error('Validation error in external posts:', error.issues);
-      throw new ValidationError('Invalid data received from external API', error.issues);
+      throw new ValidationError(error);
     }
 
     if (error instanceof AppError) {
@@ -80,10 +68,7 @@ export async function getPost(postId: number): Promise<Post> {
     // Unexpected error
     console.error('Unexpected error fetching external posts:', error);
 
-    throw new ExternalServiceError('Failed to fetch external posts', {
-      originalError: error instanceof Error ? error.message : String(error),
-      service: 'jsonplaceholder',
-    });
+    throw new ExternalServiceError({ message: 'Failed to fetch external posts' });
   }
 }
 
@@ -98,10 +83,7 @@ export async function createPost(data: Pick<Post, 'title' | 'body' | 'userId'>):
     });
 
     if (!response.ok) {
-      throw new ExternalServiceError('Failed to create post on external API', {
-        service: 'jsonplaceholder',
-        status: response.status,
-      });
+      throw new ExternalServiceError({ message: 'Failed to create post on external API' });
     }
 
     const rawData: unknown = await response.json();
@@ -111,7 +93,7 @@ export async function createPost(data: Pick<Post, 'title' | 'body' | 'userId'>):
   } catch (error) {
     if (error instanceof z.ZodError) {
       console.error('Validation error in external post:', error.issues);
-      throw new ValidationError('Invalid data received from external API', error.issues);
+      throw new ValidationError(error);
     }
 
     if (error instanceof AppError) {
@@ -121,9 +103,6 @@ export async function createPost(data: Pick<Post, 'title' | 'body' | 'userId'>):
     // Unexpected error
     console.error('Unexpected error creating the post:', error);
 
-    throw new ExternalServiceError('Failed to create the post', {
-      originalError: error instanceof Error ? error.message : String(error),
-      service: 'jsonplaceholder',
-    });
+    throw new ExternalServiceError({ message: 'Failed to create the post' });
   }
 }

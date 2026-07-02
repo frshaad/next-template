@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 import { requireOwner } from '@/lib/auth/session';
-import { AuthError } from '@/lib/errors';
+import { UnauthorizedError } from '@/lib/errors';
 
 export async function GET(req: NextRequest, ctx: RouteContext<'/api/posts/[id]'>) {
   const params = await ctx.params;
@@ -12,8 +12,8 @@ export async function GET(req: NextRequest, ctx: RouteContext<'/api/posts/[id]'>
     // ...
     return NextResponse.json({ success: true });
   } catch (error) {
-    if (error instanceof AuthError) {
-      return NextResponse.json({ error: error.message }, { status: error.statusCode });
+    if (error instanceof UnauthorizedError) {
+      return NextResponse.json({ error: error.message }, { status: 401 });
     }
 
     throw error;

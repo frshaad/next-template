@@ -2,7 +2,7 @@ import { headers } from 'next/headers';
 import { cache } from 'react';
 
 import { auth } from '@/lib/auth';
-import { AuthError } from '@/lib/errors';
+import { ForbiddenError, UnauthorizedError } from '@/lib/errors';
 
 /** Gets authentication session */
 export const getSession = cache(
@@ -16,17 +16,17 @@ export const getSession = cache(
 export async function requireAuth() {
   const session = await getSession();
   if (!session?.user) {
-    throw AuthError.unauthorized();
+    throw new UnauthorizedError();
   }
   return session;
 }
 
-/** Requires authenticated user + ownership check (common pattern) */
+/** Requires authenticated user + ownership check */
 export async function requireOwner(resourceOwnerId: string) {
   const session = await requireAuth();
 
   if (session.user.id !== resourceOwnerId) {
-    throw AuthError.forbidden("You don't have permission to access this resource");
+    throw new ForbiddenError();
   }
 
   return session;
